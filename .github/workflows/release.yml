@@ -23,16 +23,8 @@ jobs:
           pip install pyinstaller
 
       - name: Build EXE with PyInstaller
-        run: |
-          pyinstaller ^
-            --onefile ^
-            --windowed ^
-            --icon=ui\icon.ico ^
-            --collect-submodules ui ^
-            --collect-submodules game ^
-            --add-data "ui\icon.ico;ui" ^
-            --add-data "ui\fonts\vazirmatn.ttf;ui/fonts" ^
-            main.py
+        run: pyinstaller --onefile --windowed --icon=ui\icon.ico --collect-submodules ui --collect-submodules game --add-data "ui\icon.ico;ui" --add-data "ui\fonts\vazirmatn.ttf;ui/fonts" main.py
+
 
       - name: Rename EXE for release
         run: ren dist\main.exe dooz-${{ github.ref_name }}.exe
